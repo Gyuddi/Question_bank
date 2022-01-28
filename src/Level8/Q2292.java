@@ -18,6 +18,5 @@ public class Q2292 {
             }
             System.out.println(n);
         }
-        }
-
+    }
 }
