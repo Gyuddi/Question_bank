@@ -10,9 +10,13 @@ public class Q1011 {
             int start = sc.nextInt();
             int end = sc.nextInt();
             double dis = end - start;
-            double sqrt = Math.round(Math.sqrt(dis));
-
-
+            double sqrt = Math.ceil(Math.sqrt(dis));
+            if (dis <= Math.pow(sqrt,2)-sqrt){
+                System.out.println((int)(2*sqrt-2));
+            }
+            else {
+                System.out.println((int)(2*sqrt-1));
+            }
         }
     }
 }
