@@ -5,17 +5,21 @@ import java.util.Scanner;
 
 public class Q2447 {
     public static void star(String [][] arr,int x,int y,int N){
-        if(N == 1){
-            return;
-        }
-        for(int i = x;i<=x+(N/3);i++){
-            for(int j = y;i<=y+(N/3);j++){
+
+        for(int i = x;i<x+(N/3);i++){
+            for(int j = y;j<y+(N/3);j++){
                 arr[i][j] = " ";
             }
         }
-        for(int m = N/3;m<=N;m+=m){
-            for(int n = N/3;n<=N;n+=n){
-                star(arr,m,n,N/3);
+
+        for(int m = x-(N/3)+((N/3)/3);m<x-(N/3)+N;m+=(N/3)){
+            for(int n = y-(N/3)+((N/3)/3);n<=y-(N/3)+N;n+=(N/3)){
+                if(N<=3){
+                    return;
+                }
+                else {
+                    star(arr,m,n,N/3);
+                }
             }
         }
     }
