@@ -10,7 +10,6 @@ public class Q2750 {
         for (int i = 0; i < total; i++) {
             arr[i] = sc.nextInt();
         }
-
         for (int x = 0; x < total-1; x++) {
             int min_idx = x;
             for (int y = x; y < total; y++) {
