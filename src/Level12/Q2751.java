@@ -21,7 +21,6 @@ public class Q2751 {
         }
         bw.flush();
         bw.close();
-
     }
     public static void mergeSort(int[] a, int start, int end){
         if(start == end){
