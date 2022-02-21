@@ -1,43 +1,33 @@
 package Level12;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class Q18870 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int total = Integer.parseInt(br.readLine());
-        int[][] arr = new int[total][2];
+        int[] arr = new int[total];
+        int[] answer =  new int[total];
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
         for (int i = 0; i < total; i++) {
-            arr[i][1] = Integer.parseInt(st.nextToken());
-            arr[i][0] = i;
+            arr[i] =answer[i] =  Integer.parseInt(st.nextToken());
         }
-        int[][] arr_x  = arr;
-        Arrays.sort(arr,new Comparator<int[]>(){
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[1]-o2[1];
+        Arrays.sort(arr);
+        int rank = 0;
+
+        for (int i : arr) {
+            if (!map.containsKey(i)) {
+                map.put(i, rank);
+                rank++;
             }
-        });
-        ArrayList<Integer> sorted = new ArrayList<>();
-        int[] answer  = new int[total];
-        int a = 0;
-        for (int i = 0; i < total; i++) {
-            if (sorted.contains(arr[i][1])){
-                a--;
-            }
-            answer[arr[i][0]] = a;
-            sorted.add(arr[i][1]);
-            a++;
         }
-        for (int x:answer){
-            System.out.println(x);
+        StringBuilder sb = new StringBuilder();
+        for (int key : answer) {
+            sb.append(map.get(key)).append(" ");
         }
+        System.out.println(sb);
+
     }
 }
