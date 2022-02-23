@@ -11,23 +11,33 @@ public class Q9663 {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
+        N = Integer.parseInt(br.readLine());
         arr = new int[N];
         dfs(0);
         System.out.println(count);
     }
 
     public static void dfs(int depth) {
-        System.out.println("A");
+        if (depth == N) {
+            count++;
+            return;
+        }
         for (int i = 0; i < N; i++) {
-            if (depth == N) {
-                count++;
-                return;
-            }
             arr[depth] = i;
-            if(i!=depth && arr[depth]!=arr[i]&&Math.abs(depth-i)==Math.abs(arr[depth]-arr[i])){
+            if(possible(depth)){
                 dfs(depth+1);
             }
         }
+    }
+    public static boolean possible(int depth){
+        for (int i = 0; i < depth; i++) {
+            if(arr[depth]==arr[i]){
+                return false;
+            }
+            else if (Math.abs(depth-i)==Math.abs(arr[depth]-arr[i])){
+                return false;
+            }
+        }
+        return true;
     }
 }
