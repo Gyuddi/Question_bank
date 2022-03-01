@@ -3,6 +3,8 @@ package Level14;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.StringTokenizer;
 
 public class Q14889 {
@@ -38,7 +40,7 @@ public class Q14889 {
         for (int i = idx; i < N; i++) {
             if (visit[i]==false){
                 visit[i] = true;
-                dfs(i+1,count+1);
+                dfs(idx+1,count+1);
                 visit[i] = false;
             }
         }
